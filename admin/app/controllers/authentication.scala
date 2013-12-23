@@ -18,7 +18,7 @@ object Login extends LoginController with Controller with ExecutionContexts {
   }
 
   def login = Action {
-    request =>
+    implicit request =>
       val error = request.flash.get("error")
       NoCache(Ok(views.html.auth.login(error, Configuration.environment.stage)))
   }

@@ -1,4 +1,4 @@
-@(env: String, lastModified: Long)(implicit flash: Flash)
+@(env: String, lastModified: Long)(implicit flash: Flash, request: RequestHeader)
 
 @admin_main("Switchboard", env, isAuthed = true) {
 @if(flash.get("error").isDefined) { <h1 style="color:#bd362f">@flash.get("error").get</h1> }

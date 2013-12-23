@@ -11,7 +11,7 @@ object AnalyticsController extends Controller with Logging with AuthLogging {
 
   // We only do PROD analytics
 
-  def kpis() = Authenticated { request =>
+  def kpis() = Authenticated { implicit request =>
     NoCache(Ok(views.html.kpis("PROD", Seq(
       PageviewsPerUserGraph,
       ReturnUsersPercentageByDayGraph,
@@ -21,7 +21,7 @@ object AnalyticsController extends Controller with Logging with AuthLogging {
     ))))
   }
 
-  def pageviews() = Authenticated { request =>
+  def pageviews() = Authenticated { implicit request =>
     NoCache(Ok(views.html.pageviews("PROD", Seq(
       PageviewsByCountryGeoGraph,
       PageviewsByDayGraph,
@@ -31,7 +31,7 @@ object AnalyticsController extends Controller with Logging with AuthLogging {
     ))))
   }
 
-  def browsers() = Authenticated { request =>
+  def browsers() = Authenticated { implicit request =>
     NoCache(Ok(views.html.browsers("PROD",
       Analytics.getPageviewsByOperatingSystem(),
       Analytics.getPageviewsByBrowser(),
@@ -39,7 +39,7 @@ object AnalyticsController extends Controller with Logging with AuthLogging {
     )))
   }
 
-  def abtests() = Authenticated { request =>
+  def abtests() = Authenticated { implicit request =>
     NoCache(Ok(views.html.abtests("PROD",
       SwipeAvgPageViewsPerSessionGraph,
       SwipeAvgSessionDurationGraph,

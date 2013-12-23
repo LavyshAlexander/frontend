@@ -1,4 +1,4 @@
-@(env: String, os: Map[String, Long], browser: Map[String, Long], combined: Map[String, Long])
+@(env: String, os: Map[String, Long], browser: Map[String, Long], combined: Map[String, Long])(implicit request: RequestHeader)
 
 @admin_main("Browsers", env, isAuthed = true) {
 

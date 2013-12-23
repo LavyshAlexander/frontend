@@ -1,4 +1,4 @@
-@(env: String, charts: tools.Chart*)
+@(env: String, charts: tools.Chart*)(implicit request: RequestHeader)
 
 @admin_main("A/B Tests", env, isAuthed = true) {
 

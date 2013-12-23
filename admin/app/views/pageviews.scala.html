@@ -1,4 +1,4 @@
-@(env: String, charts: Seq[tools.Chart])
+@(env: String, charts: Seq[tools.Chart])(implicit request: RequestHeader)
 
 @admin_main("Pageviews", env, isAuthed = true) {
 

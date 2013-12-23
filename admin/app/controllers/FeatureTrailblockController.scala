@@ -13,14 +13,14 @@ import model.NoCache
 
 object FeatureTrailblockController extends Controller with Logging with AuthLogging with ExecutionContexts {
 
-  def edit() = Authenticated.async { request =>
+  def edit() = Authenticated.async { implicit request =>
     log("loaded config", request)
     Future(Store.getConfig getOrElse "{}") map { config =>
       NoCache(Ok(views.html.edit(config, Configuration.environment.stage)))
     }
   }
 
-  def save() = Authenticated.async { request =>
+  def save() = Authenticated.async { implicit request =>
     log("saved config", request)
     request.body.asJson map { saveConfigOrError } getOrElse {
       Future(NoCache(BadRequest(toJson(Map("status" -> "Invalid Json")))))
